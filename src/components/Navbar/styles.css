@@ -1,0 +1,48 @@
+/*  geral */
+.navbar {
+	background-color: #333;
+	padding: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.logo {
+	color: white;
+	margin-left: 20px;
+}
+
+/*  menu */
+.menu {
+	list-style: none;
+	display: flex;
+	margin-right: 20px;
+	padding: 0;
+}
+
+.menu li {
+	margin: 0 15px;
+	color: white;
+	position: relative;
+	cursor: pointer;
+}
+
+/* submenu */
+.submenu {
+	list-style: none;
+	position: absolute;
+	background-color: #444;
+	top: 25px;
+	left: 0;
+	padding: 5px;
+	display: none;
+}
+
+.submenu li {
+	padding: 5px 10px;
+	color: white;
+}
+
+.menu li:hover .submenu {
+	display: block;
+}
