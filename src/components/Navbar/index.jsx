@@ -1,5 +1,6 @@
 import React from 'react'
-import './styles.css'
+import './style.css'
+import CartWidget from '../CartWidget'
 
 function NavBar() {
 	return (
@@ -68,6 +69,7 @@ function NavBar() {
 					</ul>
 				</li>
 			</ul>
+			<CartWidget />
 		</nav>
 	)
 }
