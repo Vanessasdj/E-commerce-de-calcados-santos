@@ -1,17 +1,30 @@
-import { React } from 'react'
+import React, { useState } from 'react'
 import NavBar from './components/Navbar'
-import ItemCount from './components/ItemCount'
+import ProductCard from './components/ProductCard'
+import tenis from './assets/tenisesportivo.png'
+import ItemListContainer from './components/ItemListContainer'
 
 function App() {
-	const handleAdd = (quantity) => {
-		console.log(`Adicionado ${quantity} itens ao carrinho`)
-	}
+	const products = [
+		{
+			name: 'Tênis Esportivo',
+			description: 'Confortável e estiloso.',
+			price: 199.99,
+			image: tenis
+		}
+	]
 
 	return (
 		<div>
 			<NavBar />
-			<h1>Bem-vindo à Loja de Calçados!</h1>
-			<ItemCount stock={5} initial={1} onAdd={handleAdd} />
+			<ItemListContainer greeting="Bem vindo a nossa loja de calçados" />
+			<div className="row">
+				{products.map((product, index) => (
+					<div key={index} className="col-md-4">
+						<ProductCard product={product} />
+					</div>
+				))}
+			</div>
 		</div>
 	)
 }
