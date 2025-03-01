@@ -1,0 +1,15 @@
+.item-detail {
+	border: 1px solid #ccc;
+	padding: 16px;
+	border-radius: 8px;
+	max-width: 400px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.item-image {
+	max-width: 100%;
+	height: auto;
+	border-radius: 8px;
+	margin-bottom: 16px;
+}

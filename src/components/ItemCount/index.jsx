@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import './style.css'
 
 const ItemCount = ({ stock, initial, onAdd }) => {
-	console.log('Props recebidas:', { stock, initial, onAdd })
-
 	const [count, setCount] = useState(initial || 1)
 	const [message, setMessage] = useState('')
 
