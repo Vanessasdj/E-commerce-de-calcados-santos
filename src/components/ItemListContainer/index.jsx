@@ -1,24 +1,30 @@
-// src/components/ItemListContainer/index.jsx
 import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import './style.css'
 import ItemList from '../ItemList'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import mockItems from '../../mockItems'
 
-const ItemListContainer = ({ greeting }) => {
-	const [items, setItems] = useState([]) // Initialize state as an empty array
+const ItemListContainer = ({ greeting, addItemToCart, stock }) => {
+	const { id } = useParams()
+	const [items, setItems] = useState([])
 	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
 		const fetchItems = async () => {
 			setTimeout(() => {
-				setItems(mockItems)
+				if (id) {
+					const filteredItems = mockItems.filter((item) => item.category === id)
+					setItems(filteredItems)
+				} else {
+					setItems(mockItems)
+				}
 				setLoading(false)
 			}, 2000)
 		}
 
 		fetchItems()
-	}, [])
+	}, [id])
 
 	return (
 		<div className="container mt-4">
@@ -30,7 +36,7 @@ const ItemListContainer = ({ greeting }) => {
 					</div>
 				</div>
 			) : (
-				<ItemList items={items} />
+				<ItemList items={items} addItemToCart={addItemToCart} stock={stock} />
 			)}
 		</div>
 	)

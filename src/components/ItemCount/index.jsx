@@ -18,7 +18,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
 	}
 
 	const handleAddToCart = () => {
-		if (stock > 0) {
+		if (stock > 0 && count <= stock) {
 			onAdd(count)
 			setMessage(`Você adicionou ${count} item(s) ao carrinho!`)
 			setTimeout(() => setMessage(''), 3000)
@@ -47,7 +47,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
 			<button
 				className="add-to-cart-btn"
 				onClick={handleAddToCart}
-				disabled={stock === 0}
+				disabled={stock === 0 || count > stock}
 			>
 				Adicionar {count} ao carrinho
 			</button>

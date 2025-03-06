@@ -1,75 +1,30 @@
-// src/components/Navbar/index.jsx
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './style.css'
 import CartWidget from '../CartWidget'
 
-function NavBar() {
+function NavBar({ cartCount }) {
 	return (
 		<nav className="navbar">
 			<h2 className="logo">SNKRS</h2>
 			<ul className="menu">
-				<li className="dropdown">
+				<li>
 					<Link to="/">Inicio</Link>
-					<ul className="submenu">
-						<li>
-							<Link to="/">Inicio</Link>
-						</li>
-					</ul>
 				</li>
-				<li className="dropdown">
-					<Link to="#">Homem</Link>
-					<ul className="submenu">
-						<li>
-							<Link to="/homem/esportes">Esportes</Link>
-						</li>
-						<li>
-							<Link to="/homem/casual">Casual</Link>
-						</li>
-						<li>
-							<Link to="/homem/snkrs">Snkrs</Link>
-						</li>
-						<li>
-							<Link to="/homem/tecnologia">Tecnologia</Link>
-						</li>
-					</ul>
+				<li>
+					<Link to="/category/esportes">Esportes</Link>
 				</li>
-				<li className="dropdown">
-					<Link to="#">Mulher</Link>
-					<ul className="submenu">
-						<li>
-							<Link to="/mulher/esportes">Esportes</Link>
-						</li>
-						<li>
-							<Link to="/mulher/casual">Casual</Link>
-						</li>
-						<li>
-							<Link to="/mulher/snkrs">Snkrs</Link>
-						</li>
-						<li>
-							<Link to="/mulher/tecnologia">Tecnologia</Link>
-						</li>
-					</ul>
+				<li>
+					<Link to="/category/casual">Casual</Link>
 				</li>
-				<li className="dropdown">
-					<Link to="#">Infantil</Link>
-					<ul className="submenu">
-						<li>
-							<Link to="/infantil/esportes">Esportes</Link>
-						</li>
-						<li>
-							<Link to="/infantil/casual">Casual</Link>
-						</li>
-						<li>
-							<Link to="/infantil/snkrs">Snkrs</Link>
-						</li>
-						<li>
-							<Link to="/infantil/tecnologia">Tecnologia</Link>
-						</li>
-					</ul>
+				<li>
+					<Link to="/category/snkrs">SNKRS</Link>
+				</li>
+				<li>
+					<Link to="/category/tecnologia">Tecnologia</Link>
 				</li>
 			</ul>
-			<CartWidget />
+			<CartWidget cartCount={cartCount} />
 		</nav>
 	)
 }

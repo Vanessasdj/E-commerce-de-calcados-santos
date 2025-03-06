@@ -2,3 +2,8 @@
 	text-decoration: none;
 	color: inherit;
 }
+
+.cropped {
+	object-fit: cover;
+	height: 300px;
+}
