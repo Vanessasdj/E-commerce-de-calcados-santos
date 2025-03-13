@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import './style.css'
 import CartWidget from '../CartWidget'
+import { CartContext } from '../../CartContext'
 
-function NavBar({ cartCount }) {
+function NavBar() {
+	const { cartCount } = useContext(CartContext)
+
 	return (
 		<nav className="navbar">
 			<h2 className="logo">SNKRS</h2>

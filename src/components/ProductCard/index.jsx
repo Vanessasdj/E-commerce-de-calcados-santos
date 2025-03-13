@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './style.css'
 import ItemCount from '../ItemCount'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { CartContext } from '../../CartContext'
 
-const ProductCard = ({ product, addToCart }) => {
+const ProductCard = ({ product }) => {
+	const { addItemToCart } = useContext(CartContext)
+
 	const handleAdd = (quantity) => {
-		setCartItems([...cartItems, product])
+		addItemToCart(quantity)
 		console.log(`Adicionado ${quantity} itens ao carrinho`)
 	}
 

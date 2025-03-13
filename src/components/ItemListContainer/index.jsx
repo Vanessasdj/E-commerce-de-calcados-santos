@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import './style.css'
 import ItemList from '../ItemList'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import mockItems from '../../mockItems'
+import { CartContext } from '../../CartContext'
 
-const ItemListContainer = ({ greeting, addItemToCart, stock }) => {
+const ItemListContainer = ({ greeting }) => {
 	const { id } = useParams()
+	const { addItemToCart, stock } = useContext(CartContext)
 	const [items, setItems] = useState([])
 	const [loading, setLoading] = useState(true)
 
