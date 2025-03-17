@@ -1,17 +1,15 @@
 import React, { useState, useContext } from 'react'
-import { useParams } from 'react-router-dom'
 import { CartContext } from '../../CartContext'
 import ItemCount from '../ItemCount'
 import './style.css'
 
 const ItemDetail = ({ name, description, imageUrl, price }) => {
-	const { id } = useParams()
-	const { addItemToCart } = useContext(CartContext)
+	const { addItem } = useContext(CartContext)
 	const [quantity, setQuantity] = useState(0)
 
 	const handleAdd = (quantity) => {
 		setQuantity(quantity)
-		addItemToCart(quantity)
+		addItem({ name, description, imageUrl, price }, quantity)
 	}
 
 	return (

@@ -5,10 +5,10 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { CartContext } from '../../CartContext'
 
 const ProductCard = ({ product }) => {
-	const { addItemToCart } = useContext(CartContext)
+	const { addItem } = useContext(CartContext)
 
 	const handleAdd = (quantity) => {
-		addItemToCart(quantity)
+		addItem(product, quantity)
 		console.log(`Adicionado ${quantity} itens ao carrinho`)
 	}
 

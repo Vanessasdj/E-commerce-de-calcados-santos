@@ -2,25 +2,40 @@ import React, { createContext, useState } from 'react'
 
 export const CartContext = createContext()
 
-export const CartProvider = ({ children }) => {
-	const [cartItems, setCartItems] = useState([])
-	const [stock, setStock] = useState(15)
+const CartProvider = ({ children }) => {
+	const [cart, setCart] = useState([])
 
-	const addItemToCart = (quantity) => {
-		if (quantity <= stock) {
-			setCartItems([...cartItems, quantity])
-			setStock(stock - quantity)
-			console.log(`Adicionado ${quantity} itens ao carrinho`)
+	const addItem = (item, quantity) => {
+		const existingItem = cart.find((cartItem) => cartItem.id === item.id)
+		if (existingItem) {
+			existingItem.quantity += quantity
+			setCart([...cart])
+		} else {
+			setCart([...cart, { ...item, quantity }])
 		}
 	}
 
-	const cartCount = cartItems.reduce((a, cV) => a + cV, 0)
+	const removeItem = (itemId) => {
+		setCart(cart.filter((item) => item.id !== itemId))
+	}
+
+	const clear = () => {
+		setCart([])
+	}
+
+	const isInCart = (id) => {
+		return cart.some((item) => item.id === id)
+	}
+
+	const cartCount = cart.reduce((total, item) => total + item.quantity, 0)
 
 	return (
 		<CartContext.Provider
-			value={{ cartItems, stock, addItemToCart, cartCount }}
+			value={{ cart, addItem, removeItem, clear, isInCart, cartCount }}
 		>
 			{children}
 		</CartContext.Provider>
 	)
 }
+
+export default CartProvider

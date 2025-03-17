@@ -3,7 +3,7 @@ import NavBar from './components/Navbar'
 import ItemListContainer from './components/ItemListContainer'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import ItemDetailContainer from './components/ItemDetailContainer'
-import { CartProvider } from './CartContext'
+import CartProvider from './CartContext'
 import Cart from './components/Cart'
 
 function App() {
@@ -26,8 +26,7 @@ function App() {
 							}
 						/>
 						<Route path="/item/:id" element={<ItemDetailContainer />} />
-						<Route path="/cart" element={<Cart />} />{' '}
-						{/* Adicione a rota /cart */}
+						<Route path="/cart" element={<Cart />} />
 					</Routes>
 				</Router>
 			</div>

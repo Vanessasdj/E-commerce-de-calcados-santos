@@ -4,11 +4,9 @@ import './style.css'
 import ItemList from '../ItemList'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import mockItems from '../../mockItems'
-import { CartContext } from '../../CartContext'
 
 const ItemListContainer = ({ greeting }) => {
 	const { id } = useParams()
-	const { addItemToCart, stock } = useContext(CartContext)
 	const [items, setItems] = useState([])
 	const [loading, setLoading] = useState(true)
 
@@ -38,7 +36,7 @@ const ItemListContainer = ({ greeting }) => {
 					</div>
 				</div>
 			) : (
-				<ItemList items={items} addItemToCart={addItemToCart} stock={stock} />
+				<ItemList items={items} />
 			)}
 		</div>
 	)

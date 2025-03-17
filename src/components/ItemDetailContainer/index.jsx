@@ -1,4 +1,3 @@
-// src/components/ItemDetailContainer/index.jsx
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import ItemDetail from '../ItemDetail'
@@ -29,7 +28,7 @@ const ItemDetailContainer = () => {
 
 	return (
 		<div>
-			<h1>{item.title}</h1>
+			<h1>Visão detalhada</h1>
 			{item ? (
 				<ItemDetail
 					name={item.title}
@@ -38,7 +37,7 @@ const ItemDetailContainer = () => {
 					price={item.price}
 				/>
 			) : (
-				<p>No item found</p>
+				<p>Item não encontrado</p>
 			)}
 		</div>
 	)
