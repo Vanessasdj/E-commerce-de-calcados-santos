@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { FaShoppingCart } from 'react-icons/fa'
+import { CartContext } from '../../CartContext'
 import './style.css'
 
-const CartWidget = ({ cartCount }) => {
+const CartWidget = () => {
+	const { cartCount } = useContext(CartContext)
+
+	if (cartCount === 0) {
+		return null
+	}
+
 	return (
 		<div className="cart-widget">
 			<FaShoppingCart className="cart-icon" />

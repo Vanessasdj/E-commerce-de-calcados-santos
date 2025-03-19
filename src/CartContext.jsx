@@ -8,8 +8,13 @@ const CartProvider = ({ children }) => {
 	const addItem = (item, quantity) => {
 		const existingItem = cart.find((cartItem) => cartItem.id === item.id)
 		if (existingItem) {
-			existingItem.quantity += quantity
-			setCart([...cart])
+			setCart(
+				cart.map((cartItem) =>
+					cartItem.id === item.id
+						? { ...cartItem, quantity: cartItem.quantity + quantity }
+						: cartItem
+				)
+			)
 		} else {
 			setCart([...cart, { ...item, quantity }])
 		}

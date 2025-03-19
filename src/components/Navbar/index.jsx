@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './style.css'
 import CartWidget from '../CartWidget'
 import { CartContext } from '../../CartContext'
@@ -27,7 +28,9 @@ function NavBar() {
 					<Link to="/category/tecnologia">Tecnologia</Link>
 				</li>
 			</ul>
-			<CartWidget cartCount={cartCount} />
+			<Link className="cartw" to="/cart">
+				<CartWidget cartCount={cartCount} />
+			</Link>
 		</nav>
 	)
 }

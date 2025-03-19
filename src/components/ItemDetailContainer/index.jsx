@@ -31,6 +31,7 @@ const ItemDetailContainer = () => {
 			<h1>Visão detalhada</h1>
 			{item ? (
 				<ItemDetail
+					id={item.id}
 					name={item.title}
 					description={item.description}
 					imageUrl={item.pictureUrl}
