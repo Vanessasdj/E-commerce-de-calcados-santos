@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import './style.css'
 import ItemList from '../ItemList'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import mockItems from '../../mockItems'
+import { getCategoriesCollection } from '../../utils/firebase'
 
 const ItemListContainer = ({ greeting }) => {
 	const { id } = useParams()
@@ -12,12 +12,18 @@ const ItemListContainer = ({ greeting }) => {
 
 	useEffect(() => {
 		const fetchItems = async () => {
+			const categories = await getCategoriesCollection()
 			setTimeout(() => {
 				if (id) {
-					const filteredItems = mockItems.filter((item) => item.category === id)
-					setItems(filteredItems)
+					const categoryItems = categories[id]
+					if (categoryItems) {
+						setItems(categoryItems)
+					} else {
+						setItems([])
+					}
 				} else {
-					setItems(mockItems)
+					const allItems = Object.values(categories).flat()
+					setItems(allItems)
 				}
 				setLoading(false)
 			}, 2000)

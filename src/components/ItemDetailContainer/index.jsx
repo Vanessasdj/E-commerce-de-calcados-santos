@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import ItemDetail from '../ItemDetail'
-import mockItems from '../../mockItems'
+import { getCategoriesCollection } from '../../utils/firebase'
 
 const ItemDetailContainer = () => {
 	const { id } = useParams()
@@ -9,17 +9,17 @@ const ItemDetailContainer = () => {
 	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
-		const fetchItem = new Promise((resolve) => {
+		const fetchItem = async () => {
+			const categories = await getCategoriesCollection()
 			setTimeout(() => {
-				const foundItem = mockItems.find((item) => item.id === parseInt(id, 10))
-				resolve(foundItem)
+				const allItems = Object.values(categories).flat()
+				const foundItem = allItems.find((item) => item.id === parseInt(id, 10))
+				setItem(foundItem)
+				setLoading(false)
 			}, 2000)
-		})
+		}
 
-		fetchItem.then((data) => {
-			setItem(data)
-			setLoading(false)
-		})
+		fetchItem()
 	}, [id])
 
 	if (loading) {

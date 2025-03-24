@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import NavBar from './components/Navbar'
 import ItemListContainer from './components/ItemListContainer'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import ItemDetailContainer from './components/ItemDetailContainer'
 import CartProvider from './CartContext'
 import Cart from './components/Cart'
+import { addCollectionAndDocument } from './utils/firebase'
+import { getCategoriesCollection } from './utils/firebase'
 
 function App() {
+	// useEffect(() => {
+	// addCollectionAndDocument('categories', mockItems)
+	// }, [])
+
+	useEffect(() => {
+		const fetchCategories = async () => {
+			const categories = await getCategoriesCollection()
+			console.log(categories)
+		}
+		fetchCategories()
+	}, [])
+
 	return (
 		<CartProvider>
 			<Router>
