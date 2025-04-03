@@ -1,4 +1,4 @@
-# Título do projeto
+# e-Commerce
 
 Projeto Final "e-Commerce" em React + Vite para a Coderhouse
 
